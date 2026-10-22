@@ -1,11 +1,49 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
-</head>
-<body>
-    <h1>aaa</h1>
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block title %}
+得意先検索
+{% endblock %}
+
+{% block content %}
+
+<h2>得意先検索</h2>
+
+<form method="post">
+    {% csrf_token %}
+    <input type="text" name="customer_code">
+    <button type="submit">検索</button>
+</form>
+
+{% if error_message %}
+{{error_message}}
+{% endif %}
+
+{% if customer %}
+<table>
+    <tr>
+        <th>得意先コード</th>
+        <td>{{customer.customer_code}}</td>
+    </tr>
+    <tr>
+        <th>得意先名</th>
+        <td>{{customer.customer_name}}</td>
+    </tr>
+    <tr>
+        <th>電話番号</th>
+        <td>{{customer.customer_telno}}</td>
+    </tr>
+    <tr>
+        <th>郵便番号</th>
+        <td>{{customer.customer_postalcode}}</td>
+    </tr>
+    <tr>
+        <th>住所</th>
+        <td>{{customer.customer_address}}</td>
+    </tr>
+</table>
+{% endif %}
+
+<button>得意先管理メニュー</button>
+<button>ログアウト</button>
+
+{% endblock %}
