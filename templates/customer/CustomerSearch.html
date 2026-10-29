@@ -6,16 +6,30 @@
 
 {% block content %}
 
-<h2>得意先検索</h2>
+<div class="search_layout">
+    <div class="menu_buttons">
+        <button>得意先管理メニュー</button>
+        <button>ログアウト</button>
+    </div>
 
-<form method="post">
-    {% csrf_token %}
-    <input type="text" name="customer_code">
-    <button type="submit">検索</button>
-</form>
+    <div class="search_area">
+        <h2>得意先検索</h2>
+        <form method="post">
+            {% csrf_token %}
+            得意先コード
+            <input type="text" name="customer_code">
+            <button type="submit">検索</button>
+        </form>
+    </div>
+</div>
 
 {% if error_message %}
-{{error_message}}
+<div class="error_area">
+    <p class="error_message">{{error_message}}</p>
+    <a href="{% url 'customer_search' %}">
+        <button type="button">戻る</button>
+    </a>
+</div>
 {% endif %}
 
 {% if customer %}
@@ -42,8 +56,5 @@
     </tr>
 </table>
 {% endif %}
-
-<button>得意先管理メニュー</button>
-<button>ログアウト</button>
 
 {% endblock %}
