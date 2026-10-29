@@ -2,10 +2,13 @@ from django.shortcuts import render, redirect
 # from django.http import HttpResponse
 from .models import Customer
 
-def index(request):
+def Index(request):
     return render(request, 'customer/index.html')
 
-def customer_search(request):
+def MainMenu(request):
+    return render(request, 'customer/CustomerManagementMenu.html')
+
+def CustomerSearch(request):
     customer_code = ''
     error_message = ''
     customer = None

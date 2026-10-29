@@ -45,14 +45,14 @@ th {
     gap: 10px;
 }
 
-.toppage_buttons {
+.toppage_buttons,.management_buttons {
     display: flex;
     flex-direction: column;
     gap: 10px;
     width: 150px;
 }
 
-.search_layout {
+.search_layout,.management_menu_layout {
     display: flex;
     gap: 30px;
     align-items: flex-start;
