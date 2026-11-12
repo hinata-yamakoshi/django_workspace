@@ -8,8 +8,12 @@
 
 <h2>トップページ</h2>
 <div class="toppage_buttons">
-    <button>ログイン</button>
-    <button>新規登録</button>
+    <a href="{% url 'psys:Login' %}">
+        <button type="button" name="loginButton">ログイン</button>
+    </a>
+    <a href="">
+        <button>新規登録</button>
+    </a>
 </div>
 
 <a href="{% url 'psys:CustomerManagementMenu' %}">得意先管理画面へ</a>

@@ -5,6 +5,13 @@ from .models import Customer
 def Index(request):
     return render(request, 'customer/index.html')
 
+def login(request):
+    error_message = ''
+    if request.method == "POST":
+        employee_no = request.POST.get('employee_no')
+        password = request.POST.get('password')
+    return render(request, 'customer/Login.html', {'error_message':error_message})
+
 def MainMenu(request):
     return render(request, 'customer/CustomerManagementMenu.html')
 

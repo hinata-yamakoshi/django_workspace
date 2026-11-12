@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}
+ログイン
+{% endblock %}
+
+{% block content %}
+
+<h2>ログイン</h2>
+
+<div class="layout">
+    <div class="menu_buttons">
+        <a href="{% url 'psys:Index' %}">
+            <button type="button" name="topButton">top</button>
+        </a>
+    </div>
+    <div class="login_area">
+        <form method="post">
+            {% csrf_token %}
+            <div class="login_input">
+                従業員番号:
+                <input type="text" name="employee_no">
+                <br>
+                パスワード:
+                <input type="password" name="password">
+            </div>
+            <button type="submit" name="loginButton">ログイン</button>
+        </form>
+    </div>
+</div>
+
+{% if error_message %}
+<div class="error_area">
+    <p class="error_message">{{error_message}}</p>
+</div>
+{% endif %}
+
+{% endblock %}

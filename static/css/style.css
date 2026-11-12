@@ -28,6 +28,11 @@ th {
     text-align: center;
 }
 
+button {
+    width: 200px;
+    text-align: center;
+}
+
 .error_area {
     text-align: center;
     margin-top: 20px;
@@ -52,13 +57,13 @@ th {
     width: 150px;
 }
 
-.search_layout,.management_menu_layout {
+.layout {
     display: flex;
     gap: 30px;
     align-items: flex-start;
 }
 
-.search_area {
+.search_area,.login_area {
     text-align: left;
 }
 
