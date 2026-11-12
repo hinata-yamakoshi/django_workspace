@@ -14,10 +14,15 @@ def CustomerSearch(request):
     customer = None
     if request.method == "POST":
         customer_code = request.POST.get('customer_code')
-        try:
-            customer = Customer.objects.get(
-                customer_code=customer_code
-            )
-        except Customer.DoesNotExist:
-            error_message = '該当する得意先コードは存在しません。'
+        request.session['search_customer_code'] = customer_code
+        return redirect('psys:CustomerSearch')
+    else:
+        customer_code = request.session.pop('search_customer_code',None)
+        if customer_code:
+            try:
+                customer = Customer.objects.get(
+                    customer_code=customer_code
+                )
+            except Customer.DoesNotExist:
+                error_message = '該当する得意先コードは存在しません。'
     return render(request, 'customer/CustomerSearch.html', {'customer':customer,'error_message':error_message})

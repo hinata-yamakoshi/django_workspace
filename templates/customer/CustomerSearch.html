@@ -10,7 +10,7 @@
 
 <div class="search_layout">
     <div class="menu_buttons">
-        <a href="{% url 'CustomerManagementMenu' %}">
+        <a href="{% url 'psys:CustomerManagementMenu' %}">
             <button type="button">得意先管理メニュー</button>
         </a>
         <button>ログアウト</button>
@@ -29,7 +29,7 @@
 {% if error_message %}
 <div class="error_area">
     <p class="error_message">{{error_message}}</p>
-    <a href="{% url 'CustomerSearch' %}">
+    <a href="{% url 'psys:CustomerSearch' %}">
         <button type="button">戻る</button>
     </a>
 </div>
