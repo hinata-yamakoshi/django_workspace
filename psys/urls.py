@@ -10,4 +10,5 @@ urlpatterns = [
     path('MainMenu/', views.MainMenu, name='MainMenu'),
     path('CustomerSearch/', views.CustomerSearch, name='CustomerSearch'),
     path('CustomerManagementMenu/', views.CustomerManagementMenu, name='CustomerManagementMenu'),
+    path('CustomerList/', views.CustomerList, name='CustomerList'),
 ]

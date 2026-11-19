@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block title %}
+得意先一覧
+{% endblock %}
+
+{% block content %}
+
+<h2>得意先一覧</h2>
+
+<div class="layout">
+    <div class="button_group">
+        <a href="{% url 'psys:CustomerManagementMenu' %}">
+            <button type="button" name="CustomerManagementMenuButton">得意先管理メニュー</button>
+        </a>
+        <a href="{% url 'psys:Logout' %}">
+            <button name="logoutButton">ログアウト</button>
+        </a>
+    </div>
+
+    <div>
+        <table>
+            <tr>
+                <th>得意先コード</th>
+                <th>得意先名</th>
+                <th>電話番号</th>
+                <th>郵便番号</th>
+                <th>住所</th>
+            </tr>
+            {% if customers %}
+            {% for customer in customers %}
+                <tr>
+                    <td>{{customer.customer_code}}</td>
+                    <td>{{customer.customer_name}}</td>
+                    <td>{{customer.customer_telno}}</td>
+                    <td>{{customer.customer_postalcode}}</td>
+                    <td>{{customer.customer_address}}</td>
+                </tr>
+            {% endfor %}
+            {% endif %}
+            {% if error_message %}
+            <div class="error_area">
+                <p class="error_message">{{error_message}}</p>
+            </div>
+            {% endif %}
+        </table>
+    </div>
+</div>
+
+{% endblock %}

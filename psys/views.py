@@ -46,6 +46,16 @@ def CustomerManagementMenu(request):
     return render(request, 'customer/CustomerManagementMenu.html')
 
 @login_required
+def CustomerList(request):
+    error_message = ''
+    customers = None
+    try:
+        customers = Customer.objects.all()
+    except Customer.DoesNotExist:
+        error_message = '得意先が存在しません。'
+    return render(request, 'customer/CustomerList.html', {'customers':customers,'error_message':error_message})
+
+@login_required
 def CustomerSearch(request):
     customer_code = ''
     error_message = ''
