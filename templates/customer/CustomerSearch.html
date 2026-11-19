@@ -9,7 +9,7 @@
 <h2>得意先検索</h2>
 
 <div class="layout">
-    <div class="menu_buttons">
+    <div class="button_group">
         <a href="{% url 'psys:CustomerManagementMenu' %}">
             <button type="button" name="CustomerManagementMenuButton">得意先管理メニュー</button>
         </a>
@@ -25,41 +25,41 @@
             <input type="text" name="customer_code">
             <button type="submit" name="search" class="small_button">検索</button>
         </form>
+
+        {% if customer %}
+        <table>
+            <tr>
+                <th>得意先コード</th>
+                <td>{{customer.customer_code}}</td>
+            </tr>
+            <tr>
+                <th>得意先名</th>
+                <td>{{customer.customer_name}}</td>
+            </tr>
+            <tr>
+                <th>電話番号</th>
+                <td>{{customer.customer_telno}}</td>
+            </tr>
+            <tr>
+                <th>郵便番号</th>
+                <td>{{customer.customer_postalcode}}</td>
+            </tr>
+            <tr>
+                <th>住所</th>
+                <td>{{customer.customer_address}}</td>
+            </tr>
+        </table>
+        {% endif %}
+
+        {% if error_message %}
+        <div class="error_area">
+            <p class="error_message">{{error_message}}</p>
+            <a href="{% url 'psys:CustomerSearch' %}">
+                <button type="button" name="back" class="small_button">戻る</button>
+            </a>
+        </div>
+        {% endif %}
     </div>
 </div>
-
-{% if error_message %}
-<div class="error_area">
-    <p class="error_message">{{error_message}}</p>
-    <a href="{% url 'psys:CustomerSearch' %}">
-        <button type="button" name="back" class="small_button">戻る</button>
-    </a>
-</div>
-{% endif %}
-
-{% if customer %}
-<table>
-    <tr>
-        <th>得意先コード</th>
-        <td>{{customer.customer_code}}</td>
-    </tr>
-    <tr>
-        <th>得意先名</th>
-        <td>{{customer.customer_name}}</td>
-    </tr>
-    <tr>
-        <th>電話番号</th>
-        <td>{{customer.customer_telno}}</td>
-    </tr>
-    <tr>
-        <th>郵便番号</th>
-        <td>{{customer.customer_postalcode}}</td>
-    </tr>
-    <tr>
-        <th>住所</th>
-        <td>{{customer.customer_address}}</td>
-    </tr>
-</table>
-{% endif %}
 
 {% endblock %}

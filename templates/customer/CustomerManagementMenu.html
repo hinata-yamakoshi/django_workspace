@@ -9,30 +9,28 @@
 <h2>得意先管理メニュー</h2>
 
 <div class="layout">
-    <div class="menu_buttons">
+    <div class="button_group">
         <a href="{% url 'psys:MainMenu' %}">
             <button name="MainMenuButton">管理メニュー</button>
         </a>
     </div>
 
-    <div class="management_menu_area">
-        <div class="management_buttons">
-            <a href="">
-                <button name="CustomerList">得意先一覧</button>
-            </a>
-            <a href="{% url 'psys:CustomerSearch' %}">
-                <button type="button" name="CustomerSearch">得意先検索</button>
-            </a>
-            <a href="">
-                <button name="CustomerRegist">得意先登録</button>
-            </a>
-            <a href="">
-                <button name="CustomerDelete">得意先削除</button>
-            </a>
-            <a href="">
-                <button name="CustomerUpdate">得意先更新</button>
-            </a>
-        </div>
+    <div class="button_group">
+        <a href="">
+            <button name="CustomerList">得意先一覧</button>
+        </a>
+        <a href="{% url 'psys:CustomerSearch' %}">
+            <button type="button" name="CustomerSearch">得意先検索</button>
+        </a>
+        <a href="">
+            <button name="CustomerRegist">得意先登録</button>
+        </a>
+        <a href="">
+            <button name="CustomerDelete">得意先削除</button>
+        </a>
+        <a href="">
+            <button name="CustomerUpdate">得意先更新</button>
+        </a>
     </div>
 </div>
 

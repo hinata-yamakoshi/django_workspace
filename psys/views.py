@@ -20,7 +20,8 @@ def login(request):
         employee_no = request.POST.get('employee_no')
         password = request.POST.get('password')
         if not employee_no or not password:
-            error_message = "社員番号とパスワードを入力してください。"
+            request.session['login_error'] = "従業員番号とパスワードを入力してください。"
+            return redirect('psys:Login')
         else:
             try:
                 employee = Employee.objects.get(
@@ -30,7 +31,10 @@ def login(request):
                 request.session['employee_no'] = employee.employee_no
                 return redirect('psys:MainMenu')
             except Employee.DoesNotExist:
-                error_message = '社員番号またはパスワードが違います。'
+                request.session['login_error'] = "従業員番号またはパスワードが間違っています。"
+                return redirect('psys:Login')
+    else:
+        error_message = request.session.pop('login_error','')
     return render(request, 'customer/Login.html', {'error_message':error_message})
 
 @login_required
