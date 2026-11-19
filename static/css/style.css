@@ -33,6 +33,11 @@ button {
     text-align: center;
 }
 
+.small_button {
+    width:fit-content;
+    text-align: center;
+}
+
 .error_area {
     text-align: center;
     margin-top: 20px;

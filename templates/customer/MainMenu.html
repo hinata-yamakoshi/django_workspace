@@ -6,4 +6,23 @@
 
 {% block content %}
 <h2>管理メニュー</h2>
+
+<div class="layout">
+    <div class="menu_buttons">
+        <a href="{% url 'psys:Logout' %}">
+            <button name="logoutButton">ログアウト</button>
+        </a>
+    </div>
+
+    <div class="management_menu_area">
+        <div class="management_buttons">
+            <a href="{% url 'psys:CustomerManagementMenu' %}">
+                <button type="button" name="CustomerManagementMenu">得意先管理</button>
+            </a>
+            <a href="">
+                <button name="CustomerList">得意先集計</button>
+            </a>
+        </div>
+    </div>
+</div>
 {% endblock %}

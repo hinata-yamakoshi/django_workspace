@@ -11,10 +11,10 @@
 <div class="layout">
     <div class="menu_buttons">
         <a href="{% url 'psys:CustomerManagementMenu' %}">
-            <button type="button">得意先管理メニュー</button>
+            <button type="button" name="CustomerManagementMenuButton">得意先管理メニュー</button>
         </a>
-        <a href="">
-            <button>ログアウト</button>
+        <a href="{% url 'psys:Logout' %}">
+            <button name="logoutButton">ログアウト</button>
         </a>
     </div>
 
@@ -23,7 +23,7 @@
             {% csrf_token %}
             得意先コード
             <input type="text" name="customer_code">
-            <button type="submit">検索</button>
+            <button type="submit" name="search" class="small_button">検索</button>
         </form>
     </div>
 </div>
@@ -32,7 +32,7 @@
 <div class="error_area">
     <p class="error_message">{{error_message}}</p>
     <a href="{% url 'psys:CustomerSearch' %}">
-        <button type="button">戻る</button>
+        <button type="button" name="back" class="small_button">戻る</button>
     </a>
 </div>
 {% endif %}
