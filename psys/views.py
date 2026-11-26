@@ -23,14 +23,15 @@ def login(request):
             request.session['login_error'] = "従業員番号とパスワードを入力してください。"
             return redirect('psys:Login')
         else:
-            try:
-                employee = Employee.objects.get(
-                    employee_no=employee_no,
-                    password=password
-                )
-                request.session['employee_no'] = employee.employee_no
-                return redirect('psys:MainMenu')
-            except Employee.DoesNotExist:
+            employee = Employee.objects.filter(employee_no=employee_no).first()
+            if employee:
+                if employee.password != password:
+                    request.session['login_error'] = "従業員番号またはパスワードが間違っています。"
+                    return redirect('psys:Login')
+                else:
+                    request.session['employee_no'] = employee.employee_no
+                    return redirect('psys:MainMenu')
+            else:
                 request.session['login_error'] = "従業員番号またはパスワードが間違っています。"
                 return redirect('psys:Login')
     else:
